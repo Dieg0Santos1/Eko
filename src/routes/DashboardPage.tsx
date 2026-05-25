@@ -13,8 +13,8 @@ export function DashboardPage() {
       <Header />
       <HeroRecommendation />
 
-      <section className="mt-5 grid items-start gap-4 lg:grid-cols-[1.06fr_0.94fr]">
-        <div className="grid content-start gap-4">
+      <section className="mt-5 grid items-stretch gap-4 lg:grid-cols-[1.06fr_0.94fr]">
+        <div className="grid gap-4 lg:grid-rows-[auto_1fr]">
           <LeftStatsGroup />
           <TodayTimeline />
         </div>

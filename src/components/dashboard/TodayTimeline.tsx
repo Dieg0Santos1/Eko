@@ -5,9 +5,9 @@ import { cn } from '@/lib/utils'
 
 export function TodayTimeline() {
   return (
-    <Card className="p-5">
+    <Card className="flex h-full flex-col p-5">
       <h3 className="text-xl font-extrabold tracking-normal text-white">Tu día de hoy</h3>
-      <div className="mt-5 space-y-2">
+      <div className="mt-5 flex flex-1 flex-col justify-between gap-2">
         {dayPlan.map((item, index) => (
           <div className="grid grid-cols-[76px_24px_1fr] items-center gap-2" key={item.title}>
             <span className="text-sm text-slate-300">{item.time}</span>
@@ -52,4 +52,3 @@ function PriorityBadge({ value }: { value: string }) {
     <span className={cn('rounded-md px-2 py-1 text-xs font-bold', tone)}>{value}</span>
   )
 }
-
