@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { VoiceDock } from '@/components/dashboard/VoiceDock'
 import { MobileDock } from '@/components/layout/MobileDock'
 import { Sidebar } from '@/components/layout/Sidebar'
 
@@ -23,7 +22,6 @@ export function AppShell({ children, rightRail }: AppShellProps) {
       </section>
 
       <MobileDock />
-      <VoiceDock />
     </main>
   )
 }

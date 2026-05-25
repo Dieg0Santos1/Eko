@@ -10,7 +10,7 @@ import { productivityData } from '@/data/dashboard'
 
 export function LeftStatsGroup() {
   return (
-    <section className="grid gap-4 sm:grid-cols-2">
+    <section className="grid gap-4 sm:grid-cols-[1.28fr_0.92fr]">
       <ProgressCard />
       <MetricCard
         icon={CalendarDays}
@@ -45,46 +45,48 @@ function ProgressCard() {
   const offset = circumference - (value / 100) * circumference
 
   return (
-    <Card className="grid h-56 grid-cols-[78px_1fr] items-center gap-3">
-      <div className="relative size-[76px]">
-        <svg className="size-[76px] -rotate-90" viewBox="0 0 96 96">
-          <circle
-            cx="48"
-            cy="48"
-            fill="none"
-            r={radius}
-            stroke="rgba(255,255,255,0.08)"
-            strokeWidth="9"
-          />
-          <circle
-            cx="48"
-            cy="48"
-            fill="none"
-            r={radius}
-            stroke="url(#progressGradient)"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            strokeWidth="9"
-          />
-          <defs>
-            <linearGradient id="progressGradient" x1="0" x2="1" y1="0" y2="1">
-              <stop stopColor="#19d3ff" />
-              <stop offset="1" stopColor="#a855f7" />
-            </linearGradient>
-          </defs>
-        </svg>
-        <span className="absolute inset-0 grid place-items-center text-base font-extrabold text-white">
-          {value}%
-        </span>
-      </div>
-      <div>
-        <CardTitle className="text-sm" icon={Sparkles} label="Progreso del día" />
-        <p className="mt-4 text-sm text-slate-300">
-          <strong className="text-white">5 de 8</strong> tareas completadas
-        </p>
-        <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.08]">
-          <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-cyan-300 to-fuchsia-500" />
+    <Card className="flex h-56 flex-col justify-center">
+      <CardTitle className="text-sm" icon={Sparkles} label="Progreso del día" />
+      <div className="mt-6 flex items-center gap-5">
+        <div className="relative size-20 shrink-0">
+          <svg className="size-20 -rotate-90" viewBox="0 0 96 96">
+            <circle
+              cx="48"
+              cy="48"
+              fill="none"
+              r={radius}
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="9"
+            />
+            <circle
+              cx="48"
+              cy="48"
+              fill="none"
+              r={radius}
+              stroke="url(#progressGradient)"
+              strokeDasharray={circumference}
+              strokeDashoffset={offset}
+              strokeLinecap="round"
+              strokeWidth="9"
+            />
+            <defs>
+              <linearGradient id="progressGradient" x1="0" x2="1" y1="0" y2="1">
+                <stop stopColor="#19d3ff" />
+                <stop offset="1" stopColor="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span className="absolute inset-0 grid place-items-center text-base font-extrabold text-white">
+            {value}%
+          </span>
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm text-slate-300">
+            <strong className="text-white">5 de 8</strong> tareas completadas
+          </p>
+          <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/[0.08]">
+            <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-cyan-300 to-fuchsia-500" />
+          </div>
         </div>
       </div>
     </Card>
