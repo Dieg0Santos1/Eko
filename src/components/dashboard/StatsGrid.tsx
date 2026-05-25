@@ -1,4 +1,4 @@
-import { CalendarDays, ChevronDown, Clock3, Sparkles } from 'lucide-react'
+import { CalendarDays, Clock3, Sparkles } from 'lucide-react'
 import {
   Area,
   AreaChart,
@@ -45,9 +45,9 @@ function ProgressCard() {
   const offset = circumference - (value / 100) * circumference
 
   return (
-    <Card className="flex h-56 flex-col justify-center">
+    <Card className="flex h-56 flex-col">
       <CardTitle className="text-sm" icon={Sparkles} label="Progreso del día" />
-      <div className="mt-6 flex items-center gap-5">
+      <div className="mt-8 flex items-center gap-5">
         <div className="relative size-20 shrink-0">
           <svg className="size-20 -rotate-90" viewBox="0 0 96 96">
             <circle
@@ -121,21 +121,10 @@ function MetricCard({ icon, label, value, title, description, pill }: MetricCard
 function ProductivityCard() {
   return (
     <Card className="h-56 overflow-hidden">
-      <div className="flex items-start justify-between gap-2">
-        <div>
-          <p className="text-sm font-bold text-white">Horas productivas</p>
-          <p className="mt-5 text-3xl font-extrabold tracking-normal text-white 2xl:text-2xl">
-            3h 45m
-          </p>
-        </div>
-        <button
-          className="flex h-8 items-center gap-1 rounded-lg border border-white/10 bg-white/[0.04] px-3 text-xs text-slate-300"
-          type="button"
-        >
-          Hoy
-          <ChevronDown className="size-3" />
-        </button>
-      </div>
+      <p className="text-sm font-bold text-white">Horas productivas</p>
+      <p className="mt-5 text-3xl font-extrabold tracking-normal text-white 2xl:text-2xl">
+        3h 45m
+      </p>
       <div className="mt-2 h-18">
         <ResponsiveContainer height="100%" width="100%">
           <AreaChart data={productivityData} margin={{ left: 0, right: 0, top: 8 }}>

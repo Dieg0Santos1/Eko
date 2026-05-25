@@ -14,7 +14,9 @@ export function AppShell({ children, rightRail }: AppShellProps) {
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.032)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.022)_1px,transparent_1px)] bg-[size:64px_64px] opacity-25" />
 
       <section className="relative grid min-h-screen grid-cols-1 xl:grid-cols-[236px_minmax(720px,1fr)_350px]">
-        <Sidebar />
+        <div className="hidden xl:block">
+          <Sidebar />
+        </div>
         <div className="min-w-0 border-x border-white/10 px-4 py-6 sm:px-6 lg:px-7">
           {children}
         </div>

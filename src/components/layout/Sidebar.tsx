@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 export function Sidebar() {
   return (
-    <aside className="sticky top-0 hidden h-screen overflow-hidden border-r border-white/10 bg-[#080d1a]/74 p-4 backdrop-blur-xl xl:flex xl:flex-col">
+    <aside className="fixed inset-y-0 left-0 z-20 flex w-[236px] flex-col overflow-hidden border-r border-white/10 bg-[#080d1a]/74 p-4 backdrop-blur-xl">
       <div className="flex items-center gap-3 px-1">
         <AssistantOrb size="sm" />
         <span className="text-5xl font-black tracking-normal text-white">EKO</span>
