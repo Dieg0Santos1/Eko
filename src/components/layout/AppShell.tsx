@@ -9,7 +9,7 @@ type AppShellProps = {
 
 export function AppShell({ children, rightRail }: AppShellProps) {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#070b17] text-slate-100">
+    <main className="min-h-screen overflow-x-hidden bg-[#070b17] text-slate-100">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_5%,rgba(98,59,255,0.20),transparent_27%),radial-gradient(circle_at_82%_0%,rgba(12,185,215,0.13),transparent_24%),linear-gradient(135deg,#080b17_0%,#080b15_44%,#0b1020_100%)]" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.032)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.022)_1px,transparent_1px)] bg-[size:64px_64px] opacity-25" />
 
