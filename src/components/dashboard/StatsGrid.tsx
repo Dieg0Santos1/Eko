@@ -8,9 +8,9 @@ import {
 import { Card, CardTitle } from '@/components/ui/Card'
 import { productivityData } from '@/data/dashboard'
 
-export function StatsGrid() {
+export function LeftStatsGroup() {
   return (
-    <section className="mt-5 grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
+    <section className="grid gap-4 sm:grid-cols-2">
       <ProgressCard />
       <MetricCard
         icon={CalendarDays}
@@ -20,6 +20,13 @@ export function StatsGrid() {
         description="Sala: Innovación"
         pill="En 1h 30m"
       />
+    </section>
+  )
+}
+
+export function RightStatsGroup() {
+  return (
+    <section className="grid gap-4 sm:grid-cols-2">
       <MetricCard
         icon={Clock3}
         label="Tiempo libre"
@@ -38,7 +45,7 @@ function ProgressCard() {
   const offset = circumference - (value / 100) * circumference
 
   return (
-    <Card className="grid min-h-40 grid-cols-[78px_1fr] items-center gap-3">
+    <Card className="grid h-56 grid-cols-[78px_1fr] items-center gap-3">
       <div className="relative size-[76px]">
         <svg className="size-[76px] -rotate-90" viewBox="0 0 96 96">
           <circle
@@ -72,7 +79,7 @@ function ProgressCard() {
         </span>
       </div>
       <div>
-        <CardTitle className="text-xs" icon={Sparkles} label="Progreso del día" />
+        <CardTitle className="text-sm" icon={Sparkles} label="Progreso del día" />
         <p className="mt-4 text-sm text-slate-300">
           <strong className="text-white">5 de 8</strong> tareas completadas
         </p>
@@ -95,7 +102,7 @@ type MetricCardProps = {
 
 function MetricCard({ icon, label, value, title, description, pill }: MetricCardProps) {
   return (
-    <Card className="min-h-40">
+    <Card className="h-56 overflow-hidden">
       <CardTitle icon={icon} label={label} />
       <p className="mt-5 text-3xl font-extrabold tracking-normal text-white">{value}</p>
       {title ? <p className="mt-2 font-bold text-white">{title}</p> : null}
@@ -111,7 +118,7 @@ function MetricCard({ icon, label, value, title, description, pill }: MetricCard
 
 function ProductivityCard() {
   return (
-    <Card className="min-h-40">
+    <Card className="h-56 overflow-hidden">
       <div className="flex items-start justify-between gap-2">
         <div>
           <p className="text-sm font-bold text-white">Horas productivas</p>
