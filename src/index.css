@@ -36,3 +36,31 @@ button {
   color: #ffffff;
   background: rgba(139, 92, 246, 0.65);
 }
+
+.field-control {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 0 14px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.field-control::placeholder {
+  color: #64748b;
+}
+
+.field-control:focus {
+  border-color: rgba(168, 85, 247, 0.62);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+}
+
+select.field-control,
+input[type='date'].field-control,
+input[type='time'].field-control {
+  color-scheme: dark;
+}

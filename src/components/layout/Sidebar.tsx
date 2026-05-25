@@ -5,6 +5,7 @@ import {
   Settings,
   type LucideIcon,
 } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
 import { AssistantOrb } from '@/components/brand/AssistantOrb'
 import { navItems } from '@/data/navigation'
 import { cn } from '@/lib/utils'
@@ -18,29 +19,31 @@ export function Sidebar() {
       </div>
 
       <nav className="mt-10 space-y-2">
-        {navItems.map(({ icon: Icon, label, active }) => (
-          <button
-            className={cn(
-              'flex h-12 w-full items-center gap-4 rounded-lg px-4 text-left text-sm font-medium text-slate-400 transition hover:bg-white/[0.08] hover:text-white',
-              active &&
-                'bg-[linear-gradient(135deg,rgba(146,73,255,0.98),rgba(67,38,170,0.62))] text-white shadow-[0_16px_50px_rgba(94,54,220,0.32)]',
-            )}
+        {navItems.map(({ icon: Icon, label, path }) => (
+          <NavLink
+            className={({ isActive }) =>
+              cn(
+                'flex h-12 w-full items-center gap-4 rounded-lg px-4 text-left text-sm font-medium text-slate-400 transition hover:bg-white/[0.08] hover:text-white',
+                isActive &&
+                  'bg-[linear-gradient(135deg,rgba(146,73,255,0.98),rgba(67,38,170,0.62))] text-white shadow-[0_16px_50px_rgba(94,54,220,0.32)]',
+              )
+            }
             key={label}
-            type="button"
+            to={path}
           >
             <Icon className="size-5" />
             {label}
-          </button>
+          </NavLink>
         ))}
       </nav>
 
-      <button
+      <NavLink
         className="mt-auto flex h-14 items-center justify-center gap-3 rounded-lg bg-[linear-gradient(135deg,#913cff,#5b18dd)] px-4 text-sm font-bold text-white shadow-[0_18px_50px_rgba(99,56,255,0.38)]"
-        type="button"
+        to="/tareas?nueva=1"
       >
         <Plus className="size-5" />
         Nueva tarea
-      </button>
+      </NavLink>
 
       <div className="mt-9 space-y-2 text-slate-400">
         <SidebarUtility icon={CircleHelp} label="Ayuda" />
