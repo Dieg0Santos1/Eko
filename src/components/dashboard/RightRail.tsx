@@ -1,5 +1,4 @@
-import { Coins, Flame, Sparkles } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Flame, Sparkles } from 'lucide-react'
 import { UserAvatar } from '@/components/brand/UserAvatar'
 import { Card, CardTitle } from '@/components/ui/Card'
 import { cn } from '@/lib/utils'
@@ -33,28 +32,38 @@ export function RightRail() {
 
 function ProfilePanel() {
   return (
-    <Card className="text-center">
-      <UserAvatar />
-      <div className="mt-4 flex items-center justify-center gap-5">
-        <div>
-          <p className="text-xs font-bold text-slate-400">Nivel</p>
-          <div className="mt-1 grid size-16 place-items-center rounded-lg border border-violet-300/60 bg-violet-500/15 text-3xl font-black text-white">
-            14
-          </div>
+    <Card className="overflow-hidden bg-[radial-gradient(circle_at_28%_18%,rgba(147,51,234,0.18),transparent_34%),rgba(16,22,42,0.86)] p-5 text-center">
+      <div className="grid items-center gap-2 sm:grid-cols-[1fr_116px]">
+        <div className="-ml-3">
+          <UserAvatar />
         </div>
-        <div className="text-left">
-          <p className="font-bold text-white">Explorador Élite</p>
-          <p className="mt-3 text-sm font-bold text-slate-300">1,240 / 2,000 XP</p>
-          <div className="mt-2 h-2 w-36 overflow-hidden rounded-full bg-white/10">
-            <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-violet-400 to-fuchsia-500" />
-          </div>
+        <div className="grid justify-items-center">
+          <p className="text-sm font-bold text-slate-300">Nivel</p>
+          <LevelBadge value="14" />
         </div>
+      </div>
+      <p className="mt-3 text-lg font-extrabold tracking-normal text-white">Explorador Élite</p>
+      <p className="mt-4 text-lg font-extrabold tracking-normal text-slate-100">
+        1,240 <span className="font-bold text-slate-400">/ 2,000 XP</span>
+      </p>
+      <div className="mx-auto mt-2 h-2 w-48 max-w-full overflow-hidden rounded-full bg-white/10">
+        <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_18px_rgba(217,70,239,0.5)]" />
       </div>
       <div className="mt-5 grid grid-cols-2 gap-3">
-        <MiniStat icon={Coins} label="EKO Coins" value="1,250" />
-        <MiniStat icon={Flame} label="Racha actual" value="12 días" />
+        <RewardStat kind="coins" label="EKO Coins" value="1,250" />
+        <RewardStat kind="streak" label="Racha actual" value="12 días" />
       </div>
     </Card>
+  )
+}
+
+function LevelBadge({ value }: { value: string }) {
+  return (
+    <div className="relative mt-2 grid size-20 place-items-center">
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,#7c3cff,#c45cff)] [clip-path:polygon(50%_0%,93%_25%,93%_75%,50%_100%,7%_75%,7%_25%)] shadow-[0_0_26px_rgba(139,92,246,0.42)]" />
+      <div className="absolute inset-[3px] bg-[#17123a] [clip-path:polygon(50%_0%,93%_25%,93%_75%,50%_100%,7%_75%,7%_25%)]" />
+      <span className="relative text-3xl font-black tracking-normal text-white">{value}</span>
+    </div>
   )
 }
 
@@ -114,21 +123,39 @@ function AchievementsPanel() {
   )
 }
 
-type MiniStatProps = {
-  icon: LucideIcon
+type RewardStatProps = {
+  kind: 'coins' | 'streak'
   label: string
   value: string
 }
 
-function MiniStat({ icon: Icon, label, value }: MiniStatProps) {
+function RewardStat({ kind, label, value }: RewardStatProps) {
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.035] p-3 text-left">
-      <div className="flex items-center gap-2 text-xs text-slate-400">
-        <Icon className="size-4 text-amber-300" />
-        {label}
+    <div className="flex min-h-16 items-center gap-2.5 rounded-lg border border-white/10 bg-white/[0.035] p-2.5 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+      {kind === 'coins' ? <CoinIcon /> : <StreakIcon />}
+      <div className="min-w-0">
+        <p className="whitespace-nowrap text-xs font-medium text-slate-300">{label}</p>
+        <p className="mt-0.5 whitespace-nowrap text-lg font-extrabold tracking-normal text-white">
+          {value}
+        </p>
       </div>
-      <p className="mt-1 text-lg font-extrabold tracking-normal text-white">{value}</p>
     </div>
   )
 }
 
+function CoinIcon() {
+  return (
+    <div className="relative grid size-10 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ffe66d,#f59e0b)] shadow-[0_0_20px_rgba(245,158,11,0.42)]">
+      <div className="absolute inset-1 rounded-full border-2 border-white/55" />
+      <span className="relative text-lg font-black text-amber-900">$</span>
+    </div>
+  )
+}
+
+function StreakIcon() {
+  return (
+    <div className="grid size-10 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#ffda63,#fb923c_52%,#ef4444)] shadow-[0_0_22px_rgba(249,115,22,0.38)]">
+      <Flame className="size-6 fill-white text-white drop-shadow-[0_2px_6px_rgba(127,29,29,0.45)]" />
+    </div>
+  )
+}
